@@ -16,8 +16,6 @@
 
 #include "snacc.h"
 
-#if TCL
-
 /* 
  * tkXAppInit.c --
  *
@@ -62,6 +60,8 @@
 static char rcsid[] = "$Header: /baseline/SNACC/c++-lib/src/tkAppInit.c,v 1.1.1.1 2000/08/21 20:36:09 leonberp Exp $ SPRITE (Berkeley)";
 #endif /* not lint */
 
+#include <config.h>
+#include <tcl.h>
 #include <tk.h>
 
 #include "init.h"
@@ -97,5 +97,3 @@ Tcl_AppInit (interp)
 
     return TCL_OK;
 }
-
-#endif

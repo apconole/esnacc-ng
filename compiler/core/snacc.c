@@ -156,9 +156,8 @@ static short compareDupeFile(const char *fullpath, SRC_FILE *FileList);
 static char *sbasename(char *name);
 
 #if META
-static MetaPDU *parse_type_list PROTO (char *arg));
+static MetaPDU *parse_type_list PROTO((char *arg));
 #endif /* META */
-
 
 
 /* **************** */
@@ -974,7 +973,7 @@ MetaPDU *parse_type_list PARAMS ((arg),
 		if (!type)
 		{
 			fprintf (errFileG, "usage: {-meta|-tcl} module.type[,module.type[...]]\n");
-			return (1);
+			return NULL;
 		}
 		pdu->module = module;
 		pdu->type = type;
@@ -1207,7 +1206,7 @@ GenCxxCode PARAMS ((allMods, longJmpVal, genTypes, genValues, genEncoders, genDe
     fNames = NewObjList();
 #if META
     if (genMeta)
-	DefineObj (&fNames, meta.srcfn = MakeCxxSrcFileName (metabasefn));
+        DefineObj (&fNames, meta.srcfn = MakeCxxSrcFileName(metabasefn));
 #endif
     FOR_EACH_LIST_ELMT (currMod, allMods)
     {

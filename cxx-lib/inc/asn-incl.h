@@ -34,11 +34,6 @@
 #endif //WIN32
 
 
-#if TCL
-#include <tcl.h>
-#undef VOID
-#endif
-
 #if META
 #include "meta.h"
 #endif

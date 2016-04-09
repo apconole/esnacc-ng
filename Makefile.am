@@ -20,17 +20,6 @@ ACLOCAL_AMFLAGS = -I m4
 AM_CFLAGS = -Wstrict-prototypes
 AM_CFLAGS += $(WARNING_FLAGS)
 
-# if NDEBUG
-# AM_CPPFLAGS += -DNDEBUG
-# AM_CFLAGS += -fomit-frame-pointer
-# endif
-
-# if WIN32
-# psep=";"
-# else
-# psep=":"
-# endif
-
 ALL_LOCAL =
 BUILT_SOURCES =
 CLEANFILES =
@@ -39,6 +28,7 @@ DISTCLEANFILES =
 
 docs = \
 	README.md \
+	TODO.md \
 	licenseq.txt \
 	install.txt \
 	NEWS \

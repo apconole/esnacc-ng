@@ -7,7 +7,6 @@ cxx_lib_libcxxasn1_la_SOURCES = \
 	cxx-lib/src/asn-PERGeneral.cpp \
 	cxx-lib/src/snaccdll.cpp \
 	cxx-lib/src/snaccexcept.cpp \
-	cxx-lib/src/tkAppInit.c \
 	cxx-lib/src/asn-enum.cpp \
 	cxx-lib/src/asn-extension.cpp \
 	cxx-lib/src/asn-any.cpp \
@@ -25,7 +24,6 @@ cxx_lib_libcxxasn1_la_SOURCES = \
 	cxx-lib/src/asn-octs.cpp \
 	cxx-lib/src/vda_threads2.cpp \
 	cxx-lib/src/print.cpp \
-	cxx-lib/src/tcl-if.cpp \
 	cxx-lib/src/asn-bits.cpp \
 	cxx-lib/src/asn-len.cpp \
 	cxx-lib/src/asn-fileseg.cpp \
@@ -39,6 +37,10 @@ cxx_lib_libcxxasn1_la_WIN32_FLAGS += -DSNACCDLL_EXPORTS=1 \
 	${PTHREAD_INCLUDES}
 cxx_lib_libcxxasn1_la_WIN32_LDFLAGS += ${PTHREAD_LDFLAGS}
 cxx_lib_libcxxasn1_la_WIN32_LIBADD += ${PTHREAD_LIBS}
+endif
+
+if TCL_SUPPORTED
+cxx_lib_libcxxasn1_la_SOURCES += cxx-lib/src/tcl-if.cpp
 endif
 
 cxx_lib_libcxxasn1_la_CXXFLAGS = \

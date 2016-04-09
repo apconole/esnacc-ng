@@ -66,8 +66,8 @@
  *
  */
 
-#ifndef _SNACC_H_
-#define _SNACC_H_
+#ifndef SNACC_MAIN_H_
+#define SNACC_MAIN_H_
 
 #define GLASS	1
 #define KHO	1

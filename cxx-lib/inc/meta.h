@@ -22,6 +22,10 @@
 // introducing an AsnEnumTypeDesc class SNACCDLL_API with its own TclGetDesc2 function that returns the value names but omits the numeric values.
 // utility function AsnSe_TypeDesc::mandatmemberr added.
 //
+#include <config.h>
+
+#ifndef META_H__
+#define META_H__
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -259,4 +263,5 @@ extern int	debinify (Tcl_Interp *interp, const char *in, size_t len);
 extern int	binify (Tcl_Interp *interp, const char *str, char *buf, size_t *len);
 
 //\[sep]----------------------------------------------------------------------------------------------------------------------------
-#endif /* TCL */
+#endif
+#endif

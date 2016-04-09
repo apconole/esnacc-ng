@@ -1,38 +1,4 @@
-// file: .../c++-lib/src/tcl-if.C
-//
-// $Header: /baseline/SNACC/c++-lib/src/tcl-if.cpp,v 1.2 2001/06/19 15:19:46 grafb Exp $
-// $Log: tcl-if.cpp,v $
-// Revision 1.2  2001/06/19 15:19:46  grafb
-// Re-ordered includes and removed redundant includes for g++ 3.0 compile
-// Also ifdef-ed out two macro definitions in asn-real.cpp due to conflict
-// with this compiler version.
-//
-// Revision 1.1.1.1  2000/08/21 20:36:09  leonberp
-// First CVS Version of SNACC.
-//
-// Revision 1.6  1997/02/28 13:39:47  wan
-// Modifications collected for new version 1.3: Bug fixes, tk4.2.
-//
-// Revision 1.5  1997/01/01 23:24:35  rj
-// `typename' appears to be a reserved word in gcc 2.7, so prefix it with `_'
-//
-// Revision 1.4  1995/09/07  18:57:13  rj
-// duplicate code merged into a new function SnaccTcl::gettypedesc().
-//
-// Revision 1.3  1995/08/17  15:09:09  rj
-// snacced.[hC] renamed to tcl-if.[hC].
-// class SnaccEd renamed to SnaccTcl.
-// set Tcl's errorCode variable.
-//
-// Revision 1.2  1995/07/27  09:53:38  rj
-// comment leader fixed
-//
-// Revision 1.1  1995/07/27  09:52:22  rj
-// new file: tcl interface used by snacced.
-
 #include "asn-incl.h"
-
-#if TCL
 
 #ifdef _AIX32
 extern "C" int strncasecmp (const char* s1, const char* s2, size_t number);
@@ -1056,5 +1022,3 @@ extern "C" int Snacc_Init (Tcl_Interp *interp)
   Tcl_CreateCommand (interp, "snacc", Snacc_Cmd, (ClientData)data, Snacc_Exit);
   return TCL_OK;
 }
-
-#endif // TCL

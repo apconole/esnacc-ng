@@ -87,8 +87,8 @@
  *
  */
 
-#ifndef _asn_config_h_
-#define _asn_config_h_
+#ifndef C_LIB_ASN_CONFIG_H_
+#define C_LIB_ASN_CONFIG_H_
 
 #include <stdio.h>
 #include <setjmp.h> /* for jmp_buf type, setjmp and longjmp */
