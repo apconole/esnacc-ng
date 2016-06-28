@@ -38,7 +38,8 @@ c_lib_libcasn1_la_SOURCES = \
 	c-lib/src/exp-buf.c \
 	c-lib/src/tbl-util.c \
 	c-lib/src/asn-NumericString.c \
-	c-lib/src/hash.c 
+	c-lib/src/hash.c \
+	c-lib/src/xml.c
 
 nobase_include_HEADERS += c-lib/inc/asn-any.h \
 	c-lib/inc/asn-bits.h \
@@ -82,7 +83,8 @@ nobase_include_HEADERS += c-lib/inc/asn-any.h \
 	c-lib/inc/tbl-gen.h \
 	c-lib/inc/tbl-incl.h \
 	c-lib/inc/tbl-print.h \
-	c-lib/inc/tbl-util.h
+	c-lib/inc/tbl-util.h \
+	c-lib/inc/xml.h
 
 c_lib_libcasn1_la_CFLAGS = \
 	-I$(top_srcdir) \

@@ -5,6 +5,8 @@ Future
 * c++-lib: streambuf monitor
 * c++-lib: IOManipulator based encoding/decoding
 * documentation: Developer's guides
+* c-lib: Introduce xml reading library (xml.h)
+
 
 
 1.80

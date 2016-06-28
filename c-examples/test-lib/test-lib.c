@@ -42,6 +42,7 @@
 #endif
 #include "asn-incl.h"
 #include "sbuf.h"
+#include "xml.h"
 
 int TestAsnBuffers();
 int TestAsnTag();
@@ -53,6 +54,8 @@ int TestAsnOcts();
 int TestAsnBits();
 int TestAsnOid();
 int TestAsnList();
+
+int TestXml();
 
 int bufSize = 256;
 
@@ -126,7 +129,10 @@ main()
         isErr = TRUE;
     }
 
-
+    if (!TestXml()){
+        fprintf(stdout, "Failed XML test.\n");
+        isErr = TRUE;
+    }
 
     if (isErr)
     {
@@ -960,3 +966,25 @@ TestAsnReal()
     return noErr;
 
 }  /* TestAsnReal */
+
+int TestXml()
+{
+    char *first_string = "<simple_root><simple_child>data</simple_child><simple_child2 attr1=\"value\" /></simple_root>";
+    esnacc_xml_node_t *node = root_node_from_string(first_string);
+    int noErr = FALSE;
+
+    if (node) {
+        esnacc_xml_node_t *child = delete_first_node_by_name("simple_child2",
+                                                             node);
+        if (!child) {
+            noErr = FALSE;
+        } else {
+            dump_xml_node(child, 0);
+            Free(child);
+        }
+
+        dump_xml_node(node, 0);
+        noErr = TRUE;
+    }
+    return noErr;
+}

@@ -59,7 +59,6 @@ char    *Strdup PROTO ((const char *istring));
 /* malloc type */
 #define MT( type)	(type *)Malloc (sizeof (type))
 
-
 #ifdef __cplusplus
 }
 #endif
