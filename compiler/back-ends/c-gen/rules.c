@@ -75,6 +75,8 @@ CRules cRulesG =
     "Print",
     "Enc",
     "Dec",
+    "Enc",
+    "Dec",
     "Free",
     {
         {

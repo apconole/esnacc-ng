@@ -518,20 +518,15 @@ int main PARAMS ((argc, argv),
                     return 1;
                 }
                 /* Select encoding rules */
-                if (strcmp(argv[currArg+1], "BER") == 0)
-                {
+                if (strcmp(argv[currArg+1], "BER") == 0) {
                     AddEncRules(BER);
                     encRulesSet = TRUE;
                     currArg+=2;
-                }
-                else if (strcmp(argv[currArg+1], "DER") == 0)
-                {
+                } else if (strcmp(argv[currArg+1], "DER") == 0) {
                     AddEncRules(DER);
                     encRulesSet = TRUE;
                     currArg+=2;
-                }
-                else
-                {
+                } else {
                     fprintf (errFileG, "%s: ERROR---no such encoding rule \"%s\". Try BER or DER\n",
                         argv[0], argv[currArg+1]);
                     Usage(argv[0], stdout);
@@ -709,9 +704,10 @@ error:
     if (!genCCode && !genCxxCode && !genTypeTbls && !genIDLCode)
         genCCode = TRUE;  /* default to C if neither specified */
 
-    /* Set the encoding rules to BER if not set */
-    if (!encRulesSet)
+    /* Set the encoding rules to BER and XER if not set */
+    if (!encRulesSet) {
         AddEncRules(BER);
+    }
 
     /*
      * STEP 1---parse each ASN.1 src file

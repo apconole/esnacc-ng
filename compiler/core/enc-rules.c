@@ -48,28 +48,30 @@ static EncRulesType rulesListG[3] = {NOP, NOP, NOP};
 /* Set the encoding rule to be used */
 int SetEncRules PARAMS ((encoding), EncRulesType encoding)
 {
-  switch(encoding) {
-  case BER:
-    /* Basic Encoding Rules */
-    rulesG = BER;
-    prefixG = "B";
+    int retVal = 0;
+    switch(encoding) {
+    case BER:
+        /* Basic Encoding Rules */
+        rulesG = BER;
+        prefixG = "B";
+        /* Set the correct encodings */
+        SET_BER_LIBTYPE();
+        retVal = 1;
+        break;
 
-    /* Set the correct encodings */
-    SET_BER_LIBTYPE();
+    case DER:
+        /* Distinguished Encoding Rules */
+        rulesG = DER;
+        prefixG = "D";
+        /* Set the encodings for each lib type */
+        SET_DER_LIBTYPE();
+        retVal = 1;
+        break;
+    default:
+        break;
+    }
 
-    return 1; 
-  case DER:
-    /* Distinguished Encoding Rules */
-    rulesG = DER;
-    prefixG = "D";
-    
-    /* Set the encodings for each lib type */
-    SET_DER_LIBTYPE();
-    return 1;
-  default:
-    /* No such rule */
-    return 0;
-  }
+    return retVal;
 }
 
 /* Add an encoding to the list of encoders to generate */
@@ -91,17 +93,17 @@ void AddEncRules PARAMS((encoding), EncRulesType encoding)
 /* Return a list of the encoders to generate */
 EncRulesType *GetEncRules()
 {
-  return rulesListG;
+    return rulesListG;
 }
 
 char* GetEncRulePrefix()
 {
-  return prefixG;
+    return prefixG;
 }
 
 EncRulesType GetEncRulesType()
 {
-  return rulesG;
+    return rulesG;
 }
 
 

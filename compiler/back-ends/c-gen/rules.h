@@ -28,8 +28,6 @@
  *
  */
 
-/* see asn1module.h for CTDI (C type def info) */
-
 typedef struct CRules
 {
     int  maxDigitsToAppend;
@@ -39,6 +37,8 @@ typedef struct CRules
     char *choiceUnionDefSuffix;  /* suffix for choice union def name */
     int   capitalizeNamedElmts;
     char *printRoutineBaseName;  /* eg if "Print" -> PrintFoo (..) */
+    char *textEncodeRoutineBaseName;
+    char *textDecodeRoutineBaseName;
     char *encodeRoutineBaseName;
     char *decodeRoutineBaseName;
     char *freeRoutineBaseName;

@@ -31,6 +31,8 @@ static void PrintCPrintPrototype PROTO ((FILE *hdr, TypeDef *td));
 static void PrintCPrintDeclaration PROTO ((FILE *src, TypeDef *td));
 static void PrintCPrintDefine PROTO ((FILE *hdr, TypeDef *td));
 static void PrintCPrintLocals PROTO ((FILE *src,TypeDef *td));
+static void XRCDefinition PROTO ((FILE *hdr, FILE *src, TypeDef *td));
+
 /*
 static void PrintCPrintElmts PROTO ((FILE *src, TypeDef *td, Type *parent, NamedTypeList *elmts, char *varName));
 */
@@ -89,6 +91,7 @@ PrintCPrinter PARAMS ((src, hdr, r, mods, m, td),
         case BASICTYPE_UTCTIME:
             PrintCPrintDefine (hdr, td);
             fprintf (hdr, "\n\n");
+            XRCDefinition(hdr, src, td);
             break;
 
         case BASICTYPE_SETOF:
@@ -148,13 +151,28 @@ PrintCPrintDeclaration PARAMS ((src, td),
     CTDI *ctdi;
 
     ctdi =  td->cTypeDefInfo;
-    fprintf (src,"%s\n%s PARAMS ((f, v, indent),\n%s f _AND_\n%s *v _AND_"
-		"\n%s indent)\n", returnTypeG, ctdi->printRoutineName, fileTypeNameG,
-		ctdi->cTypeName, indentTypeNameG);
+    fprintf(src, "%s\n%s PARAMS ((f, v, indent),\n%s f _AND_\n%s *v _AND_"
+            "\n%s indent)\n", returnTypeG, ctdi->printRoutineName,
+            fileTypeNameG, ctdi->cTypeName, indentTypeNameG);
 
 }  /*  PrintCPrintDeclaration */
 
 
+static void
+XRCDefinition PARAMS ((hdr, src, td),
+                           FILE *hdr _AND_
+                           FILE *src _AND_
+                           TypeDef *td)
+{
+    CTDI *ctdi;
+
+    ctdi =  td->cTypeDefInfo;
+    fprintf(src, "%s\nXEncType%s PARAMS ((f, v)),\n %s f _AND_\n %s *v)\n",
+            returnTypeG, ctdi->cTypeName, fileTypeNameG, ctdi->cTypeName);
+    fprintf(src, "{\n");
+    fprintf(src, "    ;\n");
+    fprintf(src, "}\n");
+}
 
 
 static void

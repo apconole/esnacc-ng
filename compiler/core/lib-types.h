@@ -56,5 +56,6 @@ extern LibType libDERTypesG[];
 #define LIBTYPE_GET_ANY_REFS( tId)		(libTypesG[tId].anyRefs)
 #define SET_BER_LIBTYPE() (libTypesG = libBERTypesG)
 #define SET_DER_LIBTYPE() (libTypesG = libDERTypesG)
+#define SET_XER_LIBTYPE()
 
 #endif

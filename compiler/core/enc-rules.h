@@ -32,17 +32,17 @@ extern "C" {
 #include "asn-incl.h"
 
 #if !defined(lint)
-  static const char rcs_ENC_RULES_H[] = "@(#)$RCSfile: enc-rules.h,v $ $Revision: 1.2 $";
+static const char rcs_ENC_RULES_H[] = "@(#)$RCSfile: enc-rules.h,v $ $Revision: 1.2 $";
 #endif
 
-  /* Type of encoding rule being used */
-  typedef enum {BER, DER, NOP} EncRulesType; 
+/* Type of binary encoding rule being used */
+typedef enum {BER, DER, NOP} EncRulesType; 
 
-  int SetEncRules PROTO((EncRulesType encoding));
-  EncRulesType *GetEncRules();
-  void AddEncRules PROTO((EncRulesType encoding));
-  char* GetEncRulePrefix PROTO (());
-  EncRulesType GetEncEncRulesType PROTO (());
+int SetEncRules PROTO((EncRulesType encoding));
+EncRulesType *GetEncRules();
+void AddEncRules PROTO((EncRulesType encoding));
+char* GetEncRulePrefix PROTO (());
+EncRulesType GetEncEncRulesType PROTO (());
 
 #if defined (__cplusplus)
 }
